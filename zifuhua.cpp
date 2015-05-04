@@ -34,7 +34,10 @@ int main(int argc,char * argv[])
             capture.open(0);
         L= 15;
     }else if(argc==3){
+        if(strcmp("0",argv[1]))
             capture.open(argv[1]);
+        else
+            capture.open(0);
         //src=imread(argv[1]);
         L = atoi(argv[2]);
     }else{
