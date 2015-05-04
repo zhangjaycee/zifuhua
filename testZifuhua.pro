@@ -15,7 +15,8 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += \
+    zifuhua.cpp
  INCLUDEPATH += /usr/local/include \
                  /usr/local/include/opencv \
                  /usr/local/include/opencv2
@@ -23,3 +24,4 @@ SOURCES += main.cpp
  LIBS += /usr/local/lib/libopencv_highgui.so \
          /usr/local/lib/libopencv_core.so    \
          /usr/local/lib/libopencv_imgproc.so
+
