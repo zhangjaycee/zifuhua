@@ -15,7 +15,7 @@ int LIDU=15;
 void addMaSaiKe(IplImage *src,CvRect rect,IplImage *dst,int W,int H);
 void testMasaike(char *);
 
-
+//hi im version 1.0
 int main(int argc,char * argv[])
 {
 char name[30];
