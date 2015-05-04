@@ -15,33 +15,49 @@ int main(int argc,char * argv[])
 {
     Mat src,gray;
     int L;
+    char key;
+    int rate=20;
+   VideoCapture capture("test.MOV");
     //Init
     if(argc==1){
         printf("load test.jpg and L=15 automatically\n");
-        src=imread("test.jpg");
+        capture.open("test.MOV");
+        //src=imread("test.jpg");
         L=15;
         waitKey(0);
     }else if(argc==2){
         //argv[1] is name
-        src=imread(argv[1]);
+        //src=imread(argv[1]);
+        if(strcmp("0",argv[1]))
+            capture.open(argv[1]);
+        else
+            capture.open(0);
         L= 15;
     }else if(argc==3){
-        src=imread(argv[1]);
+            capture.open(argv[1]);
+        //src=imread(argv[1]);
         L = atoi(argv[2]);
     }else{
         printf("argc error,try again!\n");
         exit(1);
     }
-    if(src.empty()){
+ /*   if(src.empty()){
         printf("src is empty!\n");
         exit(1);
-    }
+    }*/
     //process
-    cvtColor(src ,gray , CV_RGB2GRAY);
-    process(gray,L);
-    //imshow("src",src);
-    imshow("gray",gray);
-    waitKey(0);
+    while(capture.read(src)){
+        system("clear");
+        cvtColor(src ,gray , CV_RGB2GRAY);
+        process(gray,L);
+        //imshow("src",src);
+        imshow("gray",gray);
+        key=waitKey(1000/rate);
+        if(key==27){
+            break;
+        }
+    }
+   // waitKey(0);
 }
 
 void process(Mat &img,int L)
